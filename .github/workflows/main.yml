@@ -41,22 +41,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Initialize Bot
-        run: |
-          cd ./dist
-          git init
-          git config --local user.name "GH Action bot"
-          git config --local user.email "gh-action@bot.com"
-      - name: Add origin and checkout gh-pages
-        run: |
-          cd ./dist
-          git status
-          git remote add origin https://${{github.event.repository.owner.name}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.event.repository.owner.name}}/${{github.event.repository.name}}.git
-          git checkout -b gh-pages
-      - name: Initiate Commits
-        run: |
-          cd ./dist
-          git add --all
-          git commit -m "deployed to gh pages"
-          git push origin gh-pages -f
-          echo deploy gh-pages complete
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload dist
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
