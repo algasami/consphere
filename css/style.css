@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+:root {
+    font-family: 'Source Code Pro', monospace;
+}
+
+body {
+    background-color: beige;
+    color: black;
+}
+
+a {
+    color: blue;
+}
+a:visited {
+    color: navy; 
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: rgb(10, 10, 10);
+        color: white;
+    }
+
+    a {
+        color: aqua;
+    }
+    a:visited {
+        color: blue;
+    }
+}
+
+/* centering <main></main> */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.main-section {
+    max-width: 80vw;
+    min-width: 70vw;
+}
