@@ -51,7 +51,7 @@ jobs:
         run: |
           cd ./dist
           git status
-          git remote add origin https://${{github.event.repository.owner.name}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.event.repository.name}}.git
+          git remote add origin https://${{github.event.repository.owner.name}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.event.repository.owner.name}}/${{github.event.repository.name}}.git
           git checkout -b gh-pages
       - name: Initiate Commits
         run: |
