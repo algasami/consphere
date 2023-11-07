@@ -1,5 +1,5 @@
 name: deploy github pages
-run-name: ${{ github.actor }} is deploying
+run-name: Deploying ${{github.actor}}'s commit
 
 on:
   push:
@@ -49,11 +49,13 @@ jobs:
           git config --local user.email "gh-action@bot.com"
       - name: Add origin and checkout gh-pages
         run: |
+          cd ./dist
           git status
           git remote add origin https://${{github.event.repository.owner.name}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.event.repository.name}}.git
           git checkout -b gh-pages
       - name: Initiate Commits
         run: |
+          cd ./dist
           git add --all
           git commit -m "deployed to gh pages"
           git push origin gh-pages -f
