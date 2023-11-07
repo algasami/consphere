@@ -8,7 +8,7 @@ const createNavbar = (list: Array<string>) => {
   for (const page of list) {
     const li = ul.appendChild(document.createElement('li'));
     const a = li.appendChild(document.createElement('a'));
-    a.href = `./${page}`;
+    a.href = `./${page.toLowerCase()}.html`;
     a.text = page;
   }
 };
